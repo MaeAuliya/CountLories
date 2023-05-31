@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">CountLories</string>
+    <string name="title_login_page">Masuk</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="logo_desc">ini logo</string>
+    <string name="background_desc">ini background</string>
+    <string name="pass_hint">Max 8 Character</string>
+    <string name="email_hint">Your Valid Email</string>
+    <string name="title_register_page">Daftar</string>
+    <string name="username">Username</string>
+    <string name="username_hint">Your Username</string>
+    <string name="register">Daftar</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="title_boarding_first">Point The Camera</string>
+    <string name="message_boarding_first">we hope your phone camera is not damaged! Point it at your food</string>
+    <string name="skip_btn">skip</string>
+    <string name="title_boarding_second">Scan the food</string>
+    <string name="message_boarding_second">Point the camera so that the entire device is on the screen and it will scan</string>
+    <string name="next">Continue</string>
+    <string name="title_boarding_third">See the calories</string>
+    <string name="message_boarding_third">See your food calories and get ready for healthy lifestyle</string>
+    <string name="start">Get Started</string>
+    <string name="title_welcome">Welcome to CountLories</string>
+    <string name="message_welcome">Unlock the Secrets to a Balanced Diet with CountLories, Your Personalized Calorie Counter</string>
+</resources>
