@@ -1,18 +1,22 @@
 package com.example.countlories.ui.authentication
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.example.countlories.data.model.DataDummy
-import com.example.countlories.data.model.UserModel
+import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import com.example.countlories.R
 import com.example.countlories.databinding.ActivityRegisterBinding
-import kotlin.math.log
+import com.example.countlories.utils.factory.ViewModelFactory
+import com.example.countlories.viewmodel.authentication.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
-    private val list = ArrayList<UserModel>()
+    private lateinit var factory: ViewModelFactory
+    private val registerViewModel: RegisterViewModel by viewModels { factory }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +24,39 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupView()
+        setupViewModel()
         setupAction()
     }
 
     private fun setupView(){
         supportActionBar?.hide()
+    }
+
+    private fun setupViewModel(){
+        factory = ViewModelFactory.getInstance(this)
+
+        registerViewModel.registerData.observe(this){user ->
+            if (user.status){
+                AlertDialog.Builder(this).apply {
+                    setTitle("Akun berhasil dibuat!")
+                    setMessage("Silahkan login terlebih dahulu")
+                    setPositiveButton("Lanjut") {_, _ ->
+                        finish()
+                    }
+                    create()
+                    show()
+                }
+            }
+        }
+
+        registerViewModel.isLoading.observe(this){
+            showLoading(it)
+        }
+
+        registerViewModel.isError.observe(this){
+            showError(it)
+        }
+
     }
 
     private fun setupAction(){
@@ -34,23 +66,47 @@ class RegisterActivity : AppCompatActivity() {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
 
-            addData(name, email, password)
-
-            startActivity(Intent(this, LoginActivity::class.java))
+            if (isEmailValid(email) && isPasswordValid(password)){
+                registerViewModel.postRegister(name, email, password)
+             }else if(name.isEmpty() && email.isEmpty() && password.isEmpty()){
+                Toast.makeText(this, "Pastikan data anda sudah terisi semua", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Format email atau password tidak valid", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
-
-
-    private fun addData(username:String, email:String, password:String) {
-        val data = UserModel(
-            username,
-            email,
-            password
-        )
-
-        list.add(data)
-        Log.d("Data", list.toString())
+    private fun isEmailValid(email: String) : Boolean{
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
+
+    private fun isPasswordValid(password: String) : Boolean{
+        val pattern = Regex("^(?=.*[A-Z]).{8,}$")
+        return pattern.matches(password)
+    }
+
+    private fun showLoading(isLoading: Boolean){
+        if (isLoading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun showError(isError: Boolean){
+        if (isError){
+            Toast.makeText(this, "Error occured", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.transitionExit()
+    }
+
+    private fun transitionExit(){
+        overridePendingTransition(R.anim.slide_enter_right, R.anim.slide_exit_right)
+    }
+
 
 }

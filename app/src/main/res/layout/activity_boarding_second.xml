@@ -21,7 +21,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="0dp"
         android:background="@drawable/white_background"
         app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal2"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,7 @@
             android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/green_btn"
             android:text="@string/next"
             android:textColor="@color/black"
@@ -78,40 +78,43 @@
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contentTextView" />
+            app:layout_constraintBottom_toTopOf="@id/image_view_navigation" />
 
         <ImageView
             android:id="@+id/image_view_navigation"
             android:layout_width="42dp"
             android:layout_height="10dp"
-            android:layout_marginTop="21dp"
+            android:layout_marginBottom="32dp"
             android:src="@drawable/boarding_navigator_2"
-            app:layout_constraintTop_toBottomOf="@id/continueButton"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
+    <TextView
         android:id="@+id/skip_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/green_primary"
         android:text="@string/skip_btn"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textAllCaps="false"
         android:textColor="@color/black"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        android:clickable="true"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/back_button"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:srcCompat="@drawable/back_button"
+        android:contentDescription="@string/ini_back_btn"
         android:clickable="true"
         android:focusable="true"
         android:layout_marginStart="32dp"

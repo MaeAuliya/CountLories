@@ -42,15 +42,6 @@
 
     </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidelineHorizontal"
-        app:layout_constraintBottom_toBottomOf="@id/guidelineHorizontal"
-        tools:src="@drawable/tes"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,7 +51,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginEnd="36dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/profile_image">
+        app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -91,48 +82,51 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/welcome_msg"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/setting_btn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:backgroundTint="@color/green"
+                app:backgroundTint="@color/green"
                 android:layout_marginTop="45dp"
                 android:text="@string/settings_btn"
                 android:textColor="@color/black_button"
-                android:textSize="16sp"
+                android:textAllCaps="false"
                 app:icon="@drawable/setting_btn"
+                app:iconSize="20dp"
                 app:iconTint="@color/black_button"
+                app:strokeColor="@null"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/email_user"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/favorite_btn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:backgroundTint="@color/green"
+                app:backgroundTint="@color/green"
                 android:layout_marginTop="45dp"
                 android:text="@string/favorite_btn"
                 android:textColor="@color/black_button"
-                android:textSize="16sp"
+                android:textAllCaps="false"
                 app:icon="@drawable/favorite_btn"
                 app:iconTint="@color/black_button"
+                app:iconSize="20dp"
+                app:strokeColor="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/email_user"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/sign_out_btn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                android:backgroundTint="@color/red"
+                app:backgroundTint="@color/red"
                 android:layout_marginTop="32dp"
                 android:text="@string/sign_out_btn"
                 android:textColor="@color/black_button"
-                android:textSize="16sp"
+                android:textAllCaps="false"
                 app:icon="@drawable/logout_btn"
+                app:iconSize="20dp"
                 app:iconTint="@color/black_button"
+                app:strokeColor="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/setting_btn"/>
@@ -298,6 +292,7 @@
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/scan_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/green"
