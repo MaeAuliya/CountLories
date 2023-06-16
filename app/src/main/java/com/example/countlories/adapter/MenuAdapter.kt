@@ -4,11 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.countlories.data.model.MenuModel
+import com.example.countlories.data.response.Menu
 import com.example.countlories.databinding.ItemFavBinding
 
+class MenuAdapter(private val listMenu: ArrayList<Menu>) :
+    RecyclerView.Adapter<MenuAdapter.ListViewHolder>() {
 
-class MenuAdapter(private val listMenu: ArrayList<MenuModel>) : RecyclerView.Adapter<MenuAdapter.ListViewHolder>() {
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     class ListViewHolder(var binding: ItemFavBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,11 +29,19 @@ class MenuAdapter(private val listMenu: ArrayList<MenuModel>) : RecyclerView.Ada
         val menu = listMenu[position]
 
         holder.binding.apply {
-            favTitle.text = menu.name
-            favCalories.text = menu.calorie
-            Glide.with(favImg.context)
-                .load(menu.imageUrl)
-                .into(favImg)
+            tvTitle.text = menu.name
+            calorie.text = "${menu.calories} Kkal"
+            Glide.with(ivStory.context)
+                .load(menu.image)
+                .into(ivStory)
         }
+
+        holder.itemView.setOnClickListener {
+            onItemClickCallback.onItemClicked(menu)
+        }
+    }
+
+    interface OnItemClickCallback {
+        fun onItemClicked(menu : Menu)
     }
 }

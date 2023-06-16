@@ -8,22 +8,8 @@
     tools:context=".ui.home.MainActivity"
     android:background="@color/gray_bg">
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/art"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent">
@@ -54,57 +40,81 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal">
+                app:layout_constraintTop_toTopOf="@id/art"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/title_ideal"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/title_features"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/title_ideal_feature"
+                        android:text="@string/features"
                         android:textColor="@color/black"
+                        android:textAlignment="center"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/ideal_btn"
-                        android:layout_width="350dp"
-                        android:layout_height="170dp"
-                        android:layout_marginTop="12dp"
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/btn_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/title_ideal"
-                        app:srcCompat="@drawable/ideal_btn" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/title_features"
+                        android:gravity="center_horizontal">
+
+                        <ImageView
+                            android:id="@+id/ideal_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/calculate_btn" />
+
+                        <ImageView
+                            android:id="@+id/food_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:srcCompat="@drawable/calculate_menu_btn" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                     <TextView
                         android:id="@+id/title_latest_tips"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="32dp"
+                        android:textAlignment="center"
                         android:text="@string/title_latest_tips"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/ideal_btn" />
+                        app:layout_constraintTop_toBottomOf="@id/btn_content" />
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/card_item"
-                        android:layout_width="350dp"
-                        android:layout_height="170dp"
-                        android:layout_marginTop="12dp"
+                        android:id="@+id/card_item_blog"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="24dp"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="5dp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +124,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/tips_item"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="match_parent">
 
                             <androidx.constraintlayout.widget.Guideline
                                 android:id="@+id/guidelineVertical"
@@ -129,12 +139,10 @@
                                 android:id="@+id/tips_title"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="24dp"
-                                android:layout_marginEnd="24dp"
                                 android:text="@string/content_tips_title"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
-                                android:textSize="24sp"
+                                android:textSize="12sp"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@id/guidelineVertical"
@@ -143,125 +151,28 @@
 
                             <ImageView
                                 android:id="@+id/tips_img"
-                                android:layout_width="220dp"
-                                android:layout_height="170dp"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
                                 android:scaleType="fitXY"
                                 android:src="@drawable/title1"
                                 app:layout_constraintStart_toEndOf="@id/guidelineVertical"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"/>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/title_favorite"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/title_favorite"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/card_item" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_favorite"
-                        android:layout_width="350dp"
-                        android:layout_height="83dp"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="32dp"
-                        app:cardCornerRadius="20dp"
-                        app:cardElevation="5dp"
-
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/title_favorite"
-                        app:layout_constraintBottom_toBottomOf="parent">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/fav_item"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <androidx.constraintlayout.widget.Guideline
-                                android:id="@+id/guidelineVertical_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="64dp"
-                                android:orientation="vertical"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintGuide_percent="0.5"
-                                app:layout_constraintStart_toStartOf="parent" />
-
-
-
-                            <TextView
-                                android:id="@+id/fav_title"
-                                android:layout_width="120dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/menu_title"
-                                android:textColor="@color/black"
-                                android:textSize="18sp"
-                                android:textStyle="bold"
-                                app:layout_constraintEnd_toStartOf="@id/guidelineVertical_2"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/fav_portion"
-                                android:layout_width="120dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/menu_portion"
-                                android:textColor="@color/black"
-                                app:layout_constraintEnd_toStartOf="@id/guidelineVertical_2"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fav_title" />
-
-                            <TextView
-                                android:id="@+id/fav_calories"
-                                android:layout_width="120dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="12dp"
-                                android:text="@string/menu_calories"
-                                android:textColor="@color/black"
-                                app:layout_constraintEnd_toStartOf="@id/guidelineVertical_2"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fav_portion" />
-
-                            <ImageView
-                                android:id="@+id/fav_img"
-                                android:layout_width="215dp"
-                                android:layout_height="match_parent"
-                                android:scaleType="matrix"
-                                android:src="@drawable/title1"
-                                app:layout_constraintStart_toEndOf="@id/guidelineVertical_2"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.cardview.widget.CardView>
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineHorizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="64dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_percent="0.2"
-                app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
 
-    </ScrollView>
+
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -355,23 +266,23 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/history_btn"
+                    android:id="@+id/forum_btn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/iv_history"
+                        android:id="@+id/iv_forum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/history_btn" />
+                        app:srcCompat="@drawable/community_btn" />
 
                     <TextView
-                        android:id="@+id/tv_history"
+                        android:id="@+id/tv_community"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/history_btn"
+                        android:text="@string/forum_btn"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="12sp" />

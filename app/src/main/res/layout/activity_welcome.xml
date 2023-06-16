@@ -33,9 +33,10 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
         android:background="@drawable/white_background"
         app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -43,9 +44,7 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
             android:layout_marginTop="25dp"
-            android:layout_marginEnd="50dp"
             android:text="@string/title_welcome"
             android:textColor="@color/black"
             android:textAlignment="center"
@@ -76,10 +75,11 @@
 
         <Button
             android:id="@+id/registerButton"
-            android:layout_width="146dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="32dp"
+            android:paddingHorizontal="32dp"
             android:background="@drawable/green_btn"
             android:text="@string/register"
             android:textColor="@color/black"
@@ -91,10 +91,11 @@
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="146dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
             android:layout_marginTop="32dp"
+            android:paddingHorizontal="32dp"
             android:background="@drawable/green_btn"
             android:text="@string/login"
             android:textColor="@color/black"

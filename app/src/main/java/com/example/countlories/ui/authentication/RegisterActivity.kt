@@ -1,8 +1,12 @@
 package com.example.countlories.ui.authentication
 
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -29,6 +33,9 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun setupView(){
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = Color.TRANSPARENT
         supportActionBar?.hide()
     }
 
@@ -42,6 +49,7 @@ class RegisterActivity : AppCompatActivity() {
                     setMessage("Silahkan login terlebih dahulu")
                     setPositiveButton("Lanjut") {_, _ ->
                         finish()
+                        this@RegisterActivity.transition()
                     }
                     create()
                     show()
@@ -101,11 +109,11 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        this.transitionExit()
+        this.transition()
     }
 
-    private fun transitionExit(){
-        overridePendingTransition(R.anim.slide_enter_right, R.anim.slide_exit_right)
+    private fun transition() {
+        overridePendingTransition(R.anim.fade_enter, R.anim.fade_exit)
     }
 
 

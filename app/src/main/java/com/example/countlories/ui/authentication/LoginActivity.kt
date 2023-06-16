@@ -1,9 +1,9 @@
 package com.example.countlories.ui.authentication
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -31,6 +31,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupView(){
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = Color.TRANSPARENT
         supportActionBar?.hide()
     }
 
@@ -49,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                 )
                 Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
-                this.transitionExit()
+                this.transition()
             }
         }
 
@@ -100,21 +103,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showError(isError: Boolean){
         if (isError){
-            Toast.makeText(this, "Password or Email didn't matched", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Password or Email didn't matched with criteria", Toast.LENGTH_SHORT).show()
         }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        this.transitionExit()
+        this.transition()
     }
 
-    private fun transitionEnter(){
-        overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left)
-    }
-
-    private fun transitionExit(){
-        overridePendingTransition(R.anim.slide_enter_right, R.anim.slide_exit_right)
+    private fun transition() {
+        overridePendingTransition(R.anim.fade_enter, R.anim.fade_exit)
     }
 
 

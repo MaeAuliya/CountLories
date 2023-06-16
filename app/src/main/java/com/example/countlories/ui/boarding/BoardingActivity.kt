@@ -1,8 +1,13 @@
 package com.example.countlories.ui.boarding
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import com.example.countlories.R
 import com.example.countlories.databinding.ActivityBoardingBinding
 import com.example.countlories.ui.welcome.WelcomeActivity
@@ -21,18 +26,21 @@ class BoardingActivity : AppCompatActivity() {
     }
 
     private fun setupView(){
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = Color.TRANSPARENT
         supportActionBar?.hide()
     }
 
     private fun setupAction(){
         binding.continueButton.setOnClickListener {
             startActivity(Intent(this, BoardingSecondActivity::class.java))
-            this@BoardingActivity.transitionEnter()
+            this@BoardingActivity.transition()
             finish()
         }
         binding.skipButton.setOnClickListener {
             startActivity(Intent(this, WelcomeActivity::class.java))
-            this@BoardingActivity.transitionEnter()
+            this@BoardingActivity.transition()
             finish()
         }
     }
@@ -40,15 +48,11 @@ class BoardingActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finishAffinity()
-        this.transitionExit()
+        this.transition()
     }
 
-    private fun transitionEnter(){
-        overridePendingTransition(R.anim.slide_enter_left, R.anim.slide_exit_left)
-    }
-
-    private fun transitionExit(){
-        overridePendingTransition(R.anim.slide_enter_right, R.anim.slide_exit_right)
+    private fun transition() {
+        overridePendingTransition(R.anim.fade_enter, R.anim.fade_exit)
     }
 
 }

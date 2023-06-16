@@ -1,15 +1,16 @@
 package com.example.countlories.ui.account
 
-import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.countlories.R
 import com.example.countlories.databinding.ActivityAccountBinding
 import com.example.countlories.ui.camera.CameraActivity
-import com.example.countlories.ui.history.HistoryActivity
+import com.example.countlories.ui.community.CommunityActivity
 import com.example.countlories.ui.home.MainActivity
 import com.example.countlories.ui.tips.TipsActivity
 import com.example.countlories.ui.welcome.WelcomeActivity
@@ -39,6 +40,9 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun setupView(){
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = Color.TRANSPARENT
         supportActionBar?.hide()
     }
 
@@ -62,8 +66,8 @@ class AccountActivity : AppCompatActivity() {
             transition()
         }
 
-        binding.historyBtn.setOnClickListener {
-            startActivity(Intent(this, HistoryActivity::class.java))
+        binding.forumBtn.setOnClickListener {
+            startActivity(Intent(this, CommunityActivity::class.java))
             transition()
         }
 
@@ -79,10 +83,11 @@ class AccountActivity : AppCompatActivity() {
     }
 
     private fun logoutButton(){
-        binding.signOutBtn.setOnClickListener {
+        binding.signoutBtn.setOnClickListener {
             profileViewModel.logout()
             Toast.makeText(this, "Logout Success", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, WelcomeActivity::class.java))
+            finish()
         }
     }
 

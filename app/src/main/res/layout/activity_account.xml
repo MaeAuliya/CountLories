@@ -82,54 +82,32 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/welcome_msg"/>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/setting_btn"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                app:backgroundTint="@color/green"
-                android:layout_marginTop="45dp"
-                android:text="@string/settings_btn"
-                android:textColor="@color/black_button"
-                android:textAllCaps="false"
-                app:icon="@drawable/setting_btn"
-                app:iconSize="20dp"
-                app:iconTint="@color/black_button"
-                app:strokeColor="@null"
+            <LinearLayout
+                android:id="@+id/btn_green"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email_user"/>
+                app:layout_constraintTop_toBottomOf="@id/email_user"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="45dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/favorite_btn"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                app:backgroundTint="@color/green"
-                android:layout_marginTop="45dp"
-                android:text="@string/favorite_btn"
-                android:textColor="@color/black_button"
-                android:textAllCaps="false"
-                app:icon="@drawable/favorite_btn"
-                app:iconTint="@color/black_button"
-                app:iconSize="20dp"
-                app:strokeColor="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email_user"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/signout_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    app:backgroundTint="@color/red"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/sign_out_btn"
+                    android:textColor="@color/black_button"
+                    android:textAllCaps="false"
+                    app:icon="@drawable/logout_btn"
+                    app:iconSize="20dp"
+                    app:iconTint="@color/black_button"
+                    app:strokeColor="@null" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/sign_out_btn"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                app:backgroundTint="@color/red"
-                android:layout_marginTop="32dp"
-                android:text="@string/sign_out_btn"
-                android:textColor="@color/black_button"
-                android:textAllCaps="false"
-                app:icon="@drawable/logout_btn"
-                app:iconSize="20dp"
-                app:iconTint="@color/black_button"
-                app:strokeColor="@null"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/setting_btn"/>
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -240,28 +218,29 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/history_btn"
+                    android:id="@+id/forum_btn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/iv_history"
+                        android:id="@+id/iv_forum"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/history_btn" />
+                        app:srcCompat="@drawable/community_btn" />
 
                     <TextView
-                        android:id="@+id/tv_history"
+                        android:id="@+id/tv_community"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/history_btn"
+                        android:text="@string/forum_btn"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/account_btn"

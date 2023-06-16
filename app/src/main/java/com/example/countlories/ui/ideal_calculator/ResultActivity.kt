@@ -2,9 +2,13 @@ package com.example.countlories.ui.ideal_calculator
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.lifecycle.ViewModelProvider
 import com.example.countlories.R
 import com.example.countlories.databinding.ActivityResultBinding
@@ -25,18 +29,26 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
+
         setupView()
         setupAction()
-
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, CalculatorActivity::class.java))
+        transition()
     }
 
     private fun setupView(){
+        @Suppress("DEPRECATION")
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = Color.TRANSPARENT
+        setupCount()
+        supportActionBar?.hide()
+    }
+
+    private fun setupCount(){
         gender = intent.getStringExtra(EXTRA_GENDER) ?: ""
         weight = intent.getDoubleExtra(EXTRA_WEIGHT, 0.0)
         height = intent.getDoubleExtra(EXTRA_HEIGHT, 0.0)
@@ -59,6 +71,7 @@ class ResultActivity : AppCompatActivity() {
     private fun setupAction(){
         binding.againButton.setOnClickListener {
             startActivity(Intent(this, CalculatorActivity::class.java))
+            transition()
         }
     }
 
@@ -87,6 +100,10 @@ class ResultActivity : AppCompatActivity() {
         }
 
         return status
+    }
+
+    private fun transition() {
+        overridePendingTransition(R.anim.fade_enter, R.anim.fade_exit)
     }
 
 
